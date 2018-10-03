@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">keanweng-FeelsBook</string>
+    <string name="anger">Anger</string>
+    <string name="love">Love</string>
+    <string name="joy">Joy</string>
+    <string name="surprise">Surprise</string>
+    <string name="sadness">Sadness</string>
+    <string name="fear">Fear</string>
+    <string name="count">Feeling count:</string>
+    <string name="optional">optional</string>
+    <string name="add_comment">Add comment:</string>
+    <string name="anger_count">Anger:</string>
+    <string name="love_count">Love:</string>
+    <string name="joy_count">Joy:</string>
+    <string name="surprise_count">Surprise:</string>
+    <string name="sadness_count">Sadness:</string>
+    <string name="fear_count">Fear:</string>
+    <string name="new_feeling">Record your feeling:</string>
+    <string name="browse_emotion">Browse/edit past emotions</string>
+    <string name="view_count">View Count</string>
+</resources>
