@@ -6,7 +6,7 @@
     <string name="surprise">Surprise</string>
     <string name="sadness">Sadness</string>
     <string name="fear">Fear</string>
-    <string name="count">Feeling count:</string>
+    <string name="count">Emotion count:</string>
     <string name="optional">optional</string>
     <string name="add_comment">Add comment:</string>
     <string name="anger_count">Anger:</string>
@@ -15,7 +15,8 @@
     <string name="surprise_count">Surprise:</string>
     <string name="sadness_count">Sadness:</string>
     <string name="fear_count">Fear:</string>
-    <string name="new_feeling">Record your feeling:</string>
+    <string name="new_feeling">Record your emotion:</string>
     <string name="browse_emotion">Browse/edit past emotions</string>
     <string name="view_count">View Count</string>
+    <string name="emotion_list">Past recorded emotions:</string>
 </resources>
