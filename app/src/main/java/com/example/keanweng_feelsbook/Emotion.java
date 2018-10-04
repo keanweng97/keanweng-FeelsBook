@@ -24,7 +24,7 @@ public class Emotion {
         this.comment = comment;
     }
 
-    public void setDate() {
+    public void setDate(Date date) {
         this.date = date;
     }
 

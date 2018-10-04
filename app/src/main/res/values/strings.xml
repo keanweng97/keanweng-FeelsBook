@@ -23,10 +23,12 @@
     <string name="view_count_short">View</string>
     <string name="ok">OK</string>
     <string name="delete">DELETE</string>
-    <string name="edit">EDIT</string>
+    <string name="edit_date">Edit Date</string>
     <string name="emotion_detail">Emotion Detail</string>
     <string name="emotion_type">Emotion Type:</string>
     <string name="emotion_date">Date Recorded:</string>
     <string name="emotion_comment">Comment:</string>
     <string name="no_comment">No comment was added for this emotion!</string>
+    <string name="edit_emotion">Edit&#10;Emotion</string>
+    <string name="edit_comment">Edit&#10;Comment</string>
 </resources>

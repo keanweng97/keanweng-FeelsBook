@@ -7,10 +7,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,9 +47,9 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
 
         bodyText = (EditText) findViewById(R.id.comment);
         //emotionList = (ListView) findViewById(R.id.emotionList);
-        Button loveButton = (Button) findViewById(R.id.love);
-        Button joyButton = (Button) findViewById(R.id.joy);
-        Button surpriseButton = (Button) findViewById(R.id.surprise);
+        Button loveButton = (Button) findViewById(R.id.edit_emotion);
+        Button joyButton = (Button) findViewById(R.id.edit_date);
+        Button surpriseButton = (Button) findViewById(R.id.edit_comment);
         Button angerButton = (Button) findViewById(R.id.anger);
         Button sadnessButton = (Button) findViewById(R.id.sadness);
         Button fearButton = (Button) findViewById(R.id.fear);
@@ -109,7 +107,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
             String text = bodyText.getText().toString();
 
             switch(v.getId()) {
-                case R.id.love:
+                case R.id.edit_emotion:
                     LoveEmotion newLoveEmotion = new LoveEmotion();
                     try {
                         newLoveEmotion.setComment(text);
@@ -124,7 +122,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                     }
                     break;
 
-                case R.id.joy:
+                case R.id.edit_date:
                     JoyEmotion newJoyEmotion = new JoyEmotion();
                     try {
                         newJoyEmotion.setComment(text);
@@ -139,7 +137,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                     }
                     break;
 
-                case R.id.surprise:
+                case R.id.edit_comment:
                     SurpriseEmotion newSurpriseEmotion = new SurpriseEmotion();
                     try {
                         newSurpriseEmotion.setComment(text);
