@@ -28,7 +28,7 @@ public class Emotion {
         this.date = date;
     }
 
-    public String getMessage() {
+    public String getComment() {
         return this.comment;
     }
 
@@ -36,8 +36,8 @@ public class Emotion {
         return this.date;
     }
 
-    public String toString() {
-        return this.date.toString()+" | "+this.comment;
+    public String getMoodtype() {
+        return this.moodtype;
     }
 
 }

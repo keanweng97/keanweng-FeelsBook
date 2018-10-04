@@ -19,4 +19,6 @@
     <string name="browse_emotion">Browse/edit past emotions</string>
     <string name="view_count">View Count</string>
     <string name="emotion_list">Past recorded emotions:</string>
+    <string name="record_success">Emotion recorded!</string>
+    <string name="view_count_short">View</string>
 </resources>

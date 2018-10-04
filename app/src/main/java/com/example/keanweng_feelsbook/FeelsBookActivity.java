@@ -2,6 +2,8 @@ package com.example.keanweng_feelsbook;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -70,12 +72,16 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
         fearButton.setOnClickListener(this);
         browseButton.setOnClickListener(this);
         countButton.setOnClickListener(this);
+
+
     }
 
     public void onClick(View v) {
 
         if(v.getId() == R.id.browseEmotion){
             // intent
+            Intent intent = new Intent(this, BrowseListActivity.class);
+            startActivity(intent);
         }
         else if(v.getId() == R.id.viewCount) {
             // dialog to show emotion count
@@ -245,8 +251,16 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void displayRecorded(){
-        Toast toast = Toast.makeText(this, "Emotion recorded!", Toast.LENGTH_SHORT);
-        toast.show();
+        //Toast toast = Toast.makeText(this, , Toast.LENGTH_SHORT);
+        //toast.show();
+        Snackbar mySnackbar = Snackbar.make(findViewById(android.R.id.content), getString(R.string.record_success), Snackbar.LENGTH_SHORT)
+                .setAction(getString(R.string.view_count_short), new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v){
+                        // go to view
+                    }
+                });
+        mySnackbar.show();
     }
 
     public void displayCount(){
