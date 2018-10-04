@@ -21,4 +21,12 @@
     <string name="emotion_list">Past recorded emotions:</string>
     <string name="record_success">Emotion recorded!</string>
     <string name="view_count_short">View</string>
+    <string name="ok">OK</string>
+    <string name="delete">DELETE</string>
+    <string name="edit">EDIT</string>
+    <string name="emotion_detail">Emotion Detail</string>
+    <string name="emotion_type">Emotion Type:</string>
+    <string name="emotion_date">Date Recorded:</string>
+    <string name="emotion_comment">Comment:</string>
+    <string name="no_comment">No comment was added for this emotion!</string>
 </resources>
