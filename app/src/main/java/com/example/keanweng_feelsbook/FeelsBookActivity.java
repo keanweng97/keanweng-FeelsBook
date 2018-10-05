@@ -30,9 +30,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
 
     private static final String FILENAME = "file.sav";
     private EditText bodyText;
-    //private ListView emotionList;
     private ArrayList<Emotion> emotions = new ArrayList<Emotion>();
-    //private ArrayAdapter<Emotion> adapter;
     private TextView loveText;
     private TextView joyText;
     private TextView surpriseText;
@@ -204,6 +202,13 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
     protected void onStart() {
         // TODO Auto-generated method stub
         super.onStart();
+        loadFromFile();
+        displayCount();
+    }
+
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
         loadFromFile();
         displayCount();
     }

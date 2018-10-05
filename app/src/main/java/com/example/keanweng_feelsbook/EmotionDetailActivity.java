@@ -56,9 +56,11 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
 
         Button editDate = findViewById(R.id.edit_date);
         Button editComment = findViewById(R.id.edit_comment);
+        Button delEmotion = findViewById(R.id.delete);
 
         editDate.setOnClickListener(this);
         editComment.setOnClickListener(this);
+        delEmotion.setOnClickListener(this);
 
         Intent intent = getIntent();
         position = intent.getIntExtra(BrowseListActivity.POS_EXTRA, 0);
@@ -84,17 +86,12 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
             case R.id.edit_comment:
                 showEmotionDialog();
                 break;
+
+            case R.id.delete:
+                deleteEmotion();
+                break;
         }
     }
-
-    @Override
-    protected void onStart() {
-        // TODO Auto-generated method stub
-        super.onStart();
-        loadFromFile();
-    }
-
-
 
     private void loadFromFile() {
         try {
@@ -214,6 +211,25 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
     public void displayException(String text){
         Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    public void deleteEmotion(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.confirm_delete)
+                .setMessage(R.string.confirm_delete_text)
+                .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        //do something
+                        emotions.remove(position);
+                        
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // do nothing
+                    }
+                });
     }
 
 }

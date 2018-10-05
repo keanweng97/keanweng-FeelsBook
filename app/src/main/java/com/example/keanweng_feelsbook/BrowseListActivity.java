@@ -27,6 +27,7 @@ public class BrowseListActivity extends AppCompatActivity {
     private MyAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Emotion> emotions = new ArrayList<Emotion>();
+    private ArrayList<Emotion> temp_emotions = new ArrayList<Emotion>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,53 +35,24 @@ public class BrowseListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_browse_list);
 
         emotionList = (RecyclerView) findViewById(R.id.emotionList);
-
         emotionList.setHasFixedSize(true);
-
         layoutManager = new LinearLayoutManager(this);
         emotionList.setLayoutManager(layoutManager);
-
         emotionList.addItemDecoration(new DividerItemDecoration(emotionList.getContext(),
                 DividerItemDecoration.VERTICAL));
 
         loadFromFile();
 
         adapter = new MyAdapter(emotions);
+        emotionList.setAdapter(adapter);
         adapter.setOnEntryClickListener(new MyAdapter.OnEntryClickListener() {
             @Override
             public void onEntryClick(View view, int position) {
-                // stuff that will happen when a list item is clicked
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-//                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        // User clicked OK button
-//                    }
-//                });
-//                builder.setNeutralButton(R.string.edit, new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        // User clicked edit button
-//                    }
-//                });
-//                builder.setNegativeButton(R.string.delete, new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        // User clicked delete button
-//                    }
-//                });
-//                builder.setTitle(R.string.emotion_detail)
-//                       .setMessage("test");
-//                final AlertDialog dialog = builder.create();
-//                findViewById(R.id.emotionList).post(new Runnable() {
-//                    public void run() {
-//                        dialog.show();
-//                    }
-//                });
                 Intent intent = new Intent(getApplicationContext(), EmotionDetailActivity.class);
                 intent.putExtra(POS_EXTRA, position);
                 startActivity(intent);
             }
         });
-        emotionList.setAdapter(adapter);
-
     }
 
     @Override
@@ -88,7 +60,13 @@ public class BrowseListActivity extends AppCompatActivity {
         // TODO Auto-generated method stub
         super.onStart();
         loadFromFile();
-        emotionList.setAdapter(adapter);
+    }
+
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        loadFromFile();
+        adapter.notifyDataSetChanged();
     }
 
     private void loadFromFile() {
@@ -98,9 +76,12 @@ public class BrowseListActivity extends AppCompatActivity {
             BufferedReader reader = new BufferedReader(isr);
 
             Gson gson = new Gson();
-            Type typeListTweets = new TypeToken<ArrayList<Emotion>>() {
+            Type typeListEmotions = new TypeToken<ArrayList<Emotion>>() {
             }.getType();
-            emotions = gson.fromJson(reader, typeListTweets);
+
+            temp_emotions = gson.fromJson(reader, typeListEmotions);
+            emotions.clear();
+            emotions.addAll(temp_emotions);
 
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block

@@ -43,4 +43,6 @@
     <string name="edit_comment_hint">Enter comment here</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="confirm_delete">Delete Emotion?</string>
+    <string name="confirm_delete_text">Deleted Emotions cannot be recovered! Delete?</string>
 </resources>
