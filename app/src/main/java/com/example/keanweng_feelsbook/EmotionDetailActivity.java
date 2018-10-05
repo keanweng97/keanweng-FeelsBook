@@ -53,18 +53,15 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
 
         dateText = findViewById(R.id.date);
         commentText = findViewById(R.id.comment);
-
         Button editDate = findViewById(R.id.edit_date);
         Button editComment = findViewById(R.id.edit_comment);
         Button delEmotion = findViewById(R.id.delete);
-
         editDate.setOnClickListener(this);
         editComment.setOnClickListener(this);
         delEmotion.setOnClickListener(this);
 
         Intent intent = getIntent();
         position = intent.getIntExtra(BrowseListActivity.POS_EXTRA, 0);
-
         updateEmotion();
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -74,7 +71,6 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
         spinner.setAdapter(adapter);
         spinner.setSelection(adapter.getPosition(emotion.getMoodtype()));
         spinner.setOnItemSelectedListener(this);
-
     }
 
     public void onClick(View v) {
@@ -136,7 +132,12 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
         String f_date = df.format(uf_date);
 
         dateText.setText(f_date);
-        commentText.setText(emotion.getComment());
+        String cmt = emotion.getComment();
+        if (cmt.equals("")){
+            commentText.setText(R.string.no_comment);
+        } else{
+            commentText.setText(cmt);
+        }
     }
 
     public void showDateTimePicker() {
@@ -222,7 +223,8 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
                     public void onClick(DialogInterface dialog, int id) {
                         //do something
                         emotions.remove(position);
-                        
+                        saveInFile();
+                        finish();
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -230,6 +232,8 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
                         // do nothing
                     }
                 });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
 }
