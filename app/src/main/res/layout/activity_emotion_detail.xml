@@ -78,19 +78,20 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <Button
-        android:id="@+id/edit_emotion"
+        android:id="@+id/delete"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/edit_emotion"
+        android:text="@string/delete"
         app:layout_constraintEnd_toStartOf="@+id/edit_date"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <Button
         android:id="@+id/edit_date"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -98,7 +99,7 @@
         android:text="@string/edit_date"
         app:layout_constraintEnd_toStartOf="@+id/edit_comment"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/edit_emotion"
+        app:layout_constraintStart_toEndOf="@+id/delete"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <Button
@@ -108,21 +109,10 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/edit_comment"
-        android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/edit_date"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
-
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/delete"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_emotion" />
 
     <Spinner
         android:id="@+id/spinner"

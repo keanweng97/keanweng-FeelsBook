@@ -1,19 +1,23 @@
 package com.example.keanweng_feelsbook;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -42,7 +46,6 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
     private int position;
     private Emotion emotion;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,11 +53,10 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
 
         dateText = findViewById(R.id.date);
         commentText = findViewById(R.id.comment);
-        Button editEmotion = findViewById(R.id.edit_emotion);
+
         Button editDate = findViewById(R.id.edit_date);
         Button editComment = findViewById(R.id.edit_comment);
 
-        editEmotion.setOnClickListener(this);
         editDate.setOnClickListener(this);
         editComment.setOnClickListener(this);
 
@@ -79,10 +81,8 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
                 showDateTimePicker();
                 break;
 
-            case R.id.edit_emotion:
-                break;
-
             case R.id.edit_comment:
+                showEmotionDialog();
                 break;
         }
     }
@@ -175,6 +175,45 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
+    }
+
+    public void showEmotionDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.edittext_dialog, null);
+        builder.setView(dialogView);
+
+        final EditText edt = (EditText) dialogView.findViewById(R.id.edit_comment_text);
+
+        builder.setTitle(R.string.edit_comment)
+                .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                    //do something
+                        String text = edt.getText().toString();
+                        try {
+                            emotion.setComment(text);
+                            emotions.set(position, emotion);
+                            saveInFile();
+                            updateEmotion();
+                        } catch (TooLongCommentException e) {
+                            e.printStackTrace();
+                            displayException(e.getMessage());
+                        }
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // do nothing
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    public void displayException(String text){
+        Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
+        toast.show();
     }
 
 }

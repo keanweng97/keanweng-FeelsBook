@@ -47,9 +47,9 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
 
         bodyText = (EditText) findViewById(R.id.comment);
         //emotionList = (ListView) findViewById(R.id.emotionList);
-        Button loveButton = (Button) findViewById(R.id.edit_emotion);
-        Button joyButton = (Button) findViewById(R.id.edit_date);
-        Button surpriseButton = (Button) findViewById(R.id.edit_comment);
+        Button loveButton = (Button) findViewById(R.id.love);
+        Button joyButton = (Button) findViewById(R.id.joy);
+        Button surpriseButton = (Button) findViewById(R.id.surprise);
         Button angerButton = (Button) findViewById(R.id.anger);
         Button sadnessButton = (Button) findViewById(R.id.sadness);
         Button fearButton = (Button) findViewById(R.id.fear);
@@ -107,7 +107,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
             String text = bodyText.getText().toString();
 
             switch(v.getId()) {
-                case R.id.edit_emotion:
+                case R.id.love:
                     LoveEmotion newLoveEmotion = new LoveEmotion();
                     try {
                         newLoveEmotion.setComment(text);
@@ -122,7 +122,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                     }
                     break;
 
-                case R.id.edit_date:
+                case R.id.joy:
                     JoyEmotion newJoyEmotion = new JoyEmotion();
                     try {
                         newJoyEmotion.setComment(text);
@@ -137,7 +137,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                     }
                     break;
 
-                case R.id.edit_comment:
+                case R.id.surprise:
                     SurpriseEmotion newSurpriseEmotion = new SurpriseEmotion();
                     try {
                         newSurpriseEmotion.setComment(text);

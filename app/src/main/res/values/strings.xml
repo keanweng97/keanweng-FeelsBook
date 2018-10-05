@@ -29,8 +29,8 @@
     <string name="emotion_date">Date Recorded:</string>
     <string name="emotion_comment">Comment:</string>
     <string name="no_comment">No comment was added for this emotion!</string>
-    <string name="edit_emotion">Edit&#10;Emotion</string>
-    <string name="edit_comment">Edit&#10;Comment</string>
+    <string name="edit_emotion">Edit Emotion</string>
+    <string name="edit_comment">Edit Comment</string>
 
     <string-array name="emotions_array">
         <item>Anger</item>
@@ -40,4 +40,7 @@
         <item>Sadness</item>
         <item>Surprise</item>
     </string-array>
+    <string name="edit_comment_hint">Enter comment here</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 </resources>

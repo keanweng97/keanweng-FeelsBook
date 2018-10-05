@@ -117,32 +117,32 @@
         tools:targetApi="o" />
 
     <Button
-        android:id="@+id/edit_emotion"
+        android:id="@+id/love"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/love"
-        app:layout_constraintEnd_toStartOf="@+id/edit_date"
+        app:layout_constraintEnd_toStartOf="@+id/joy"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/comment" />
 
     <Button
-        android:id="@+id/edit_date"
+        android:id="@+id/joy"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="@string/joy"
-        app:layout_constraintEnd_toStartOf="@+id/edit_comment"
+        app:layout_constraintEnd_toStartOf="@+id/surprise"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/edit_emotion"
+        app:layout_constraintStart_toEndOf="@+id/love"
         app:layout_constraintTop_toBottomOf="@+id/comment" />
 
     <Button
-        android:id="@+id/edit_comment"
+        android:id="@+id/surprise"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -150,7 +150,7 @@
         android:text="@string/surprise"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/edit_date"
+        app:layout_constraintStart_toEndOf="@+id/joy"
         app:layout_constraintTop_toBottomOf="@+id/comment" />
 
     <Button
@@ -163,7 +163,7 @@
         app:layout_constraintEnd_toStartOf="@+id/sadness"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_emotion" />
+        app:layout_constraintTop_toBottomOf="@+id/love" />
 
     <Button
         android:id="@+id/sadness"
@@ -175,7 +175,7 @@
         app:layout_constraintEnd_toStartOf="@+id/fear"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/anger"
-        app:layout_constraintTop_toBottomOf="@+id/edit_date" />
+        app:layout_constraintTop_toBottomOf="@+id/joy" />
 
     <Button
         android:id="@+id/fear"
@@ -188,7 +188,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/sadness"
-        app:layout_constraintTop_toBottomOf="@+id/edit_comment" />
+        app:layout_constraintTop_toBottomOf="@+id/surprise" />
 
     <Button
         android:id="@+id/browseEmotion"
