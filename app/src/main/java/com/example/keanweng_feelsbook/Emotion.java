@@ -28,6 +28,10 @@ public class Emotion {
         this.date = date;
     }
 
+    public void setMoodtype(String moodtype){
+        this.moodtype = moodtype;
+    }
+
     public String getComment() {
         return this.comment;
     }

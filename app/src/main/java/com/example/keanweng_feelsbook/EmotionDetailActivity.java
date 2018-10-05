@@ -7,8 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -30,11 +33,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class EmotionDetailActivity extends AppCompatActivity implements View.OnClickListener{
+public class EmotionDetailActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     private static final String FILENAME = "file.sav";
     private ArrayList<Emotion> emotions = new ArrayList<Emotion>();
     private TextView dateText;
-    private TextView emotionText;
     private TextView commentText;
     private Calendar date;
     private int position;
@@ -47,7 +49,6 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_emotion_detail);
 
         dateText = findViewById(R.id.date);
-        emotionText = findViewById(R.id.emotion);
         commentText = findViewById(R.id.comment);
         Button editEmotion = findViewById(R.id.edit_emotion);
         Button editDate = findViewById(R.id.edit_date);
@@ -61,6 +62,14 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
         position = intent.getIntExtra(BrowseListActivity.POS_EXTRA, 0);
 
         updateEmotion();
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.emotions_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setSelection(adapter.getPosition(emotion.getMoodtype()));
+        spinner.setOnItemSelectedListener(this);
 
     }
 
@@ -130,7 +139,6 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
         String f_date = df.format(uf_date);
 
         dateText.setText(f_date);
-        emotionText.setText(emotion.getMoodtype());
         commentText.setText(emotion.getComment());
     }
 
@@ -156,4 +164,17 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
             }
         }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
     }
+
+    public void onItemSelected(AdapterView<?> parent, View view,
+                               int pos, long id) {
+        String moodtype = parent.getItemAtPosition(pos).toString();
+        emotion.setMoodtype(moodtype);
+        emotions.set(position, emotion);
+        saveInFile();
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
+    }
+
 }

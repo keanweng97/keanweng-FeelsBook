@@ -31,4 +31,13 @@
     <string name="no_comment">No comment was added for this emotion!</string>
     <string name="edit_emotion">Edit&#10;Emotion</string>
     <string name="edit_comment">Edit&#10;Comment</string>
+
+    <string-array name="emotions_array">
+        <item>Anger</item>
+        <item>Fear</item>
+        <item>Joy</item>
+        <item>Love</item>
+        <item>Sadness</item>
+        <item>Surprise</item>
+    </string-array>
 </resources>

@@ -61,16 +61,6 @@
         app:layout_constraintTop_toBottomOf="@+id/emotionDate" />
 
     <TextView
-        android:id="@+id/emotion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="EMOTION"
-        app:layout_constraintStart_toEndOf="@+id/emotionType"
-        app:layout_constraintTop_toBottomOf="@+id/emotionTitle" />
-
-    <TextView
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -133,5 +123,14 @@
         android:text="@string/delete"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_emotion" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toEndOf="@+id/emotionType"
+        app:layout_constraintTop_toBottomOf="@+id/emotionTitle" />
 
 </android.support.constraint.ConstraintLayout>
