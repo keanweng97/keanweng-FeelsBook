@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -35,6 +36,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 public class EmotionDetailActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
@@ -153,6 +156,7 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         date.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         date.set(Calendar.MINUTE, minute);
+                        Log.v("abc", "The choosen one " + date.getTime());
                         emotion.setDate(date.getTime());
                         emotions.set(position, emotion);
                         saveInFile();
@@ -235,5 +239,4 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
         AlertDialog alert = builder.create();
         alert.show();
     }
-
 }

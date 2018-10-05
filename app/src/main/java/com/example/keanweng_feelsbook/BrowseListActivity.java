@@ -14,11 +14,17 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class BrowseListActivity extends AppCompatActivity {
     public static final String POS_EXTRA = "com.example.keanweng-FeelsBook.POS";
@@ -80,8 +86,10 @@ public class BrowseListActivity extends AppCompatActivity {
             }.getType();
 
             temp_emotions = gson.fromJson(reader, typeListEmotions);
+            emotionSort();
             emotions.clear();
             emotions.addAll(temp_emotions);
+            saveInFile();
 
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
@@ -89,7 +97,30 @@ public class BrowseListActivity extends AppCompatActivity {
         }
     }
 
+    private void saveInFile() {
+        try {
+            FileOutputStream fos = openFileOutput(FILENAME,
+                    0);
+            OutputStreamWriter osw = new OutputStreamWriter(fos);
+            BufferedWriter writer = new BufferedWriter(osw);
 
+            Gson gson = new Gson();
+            gson.toJson(emotions,osw);
+            writer.flush();
+            writer.close();
 
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
+    public void emotionSort(){
+        Collections.sort(temp_emotions, new Comparator<Emotion>() {
+            @Override
+            public int compare(Emotion o1, Emotion o2) {
+                return o1.getDate().compareTo(o2.getDate());
+            }
+        });
+    }
 }

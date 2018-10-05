@@ -276,7 +276,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
     }
 
     public String updateCountString(String emotion){
-        String countString = emotion + ":";
+        String countString = emotion + ": ";
         int count = countEmotion(emotion);
         if (count > 99){
             countString = countString + "99+";

@@ -10,9 +10,11 @@
         android:id="@+id/countTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:text="@string/count"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,8 +25,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/love_count"
-        app:layout_constraintEnd_toStartOf="@+id/countJoy"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/countTitle" />
 
@@ -35,9 +37,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/joy_count"
-        app:layout_constraintEnd_toStartOf="@+id/countSurprise"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/countLove"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/countTitle" />
 
     <TextView
@@ -47,9 +49,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/surprise_count"
-        app:layout_constraintEnd_toStartOf="@+id/countAnger"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/countJoy"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/countTitle" />
 
     <TextView
@@ -59,10 +61,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/anger_count"
-        app:layout_constraintEnd_toStartOf="@+id/countSadness"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/countSurprise"
-        app:layout_constraintTop_toBottomOf="@+id/countTitle" />
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countLove" />
 
     <TextView
         android:id="@+id/countSadness"
@@ -71,10 +73,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/sadness_count"
-        app:layout_constraintEnd_toStartOf="@+id/countFear"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/countAnger"
-        app:layout_constraintTop_toBottomOf="@+id/countTitle" />
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/countJoy" />
 
     <TextView
         android:id="@+id/countFear"
@@ -82,12 +84,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:text="@string/fear_count"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/countSadness"
-        app:layout_constraintTop_toBottomOf="@+id/countTitle" />
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/countSurprise" />
 
     <TextView
         android:id="@+id/recordTitle"
@@ -96,9 +97,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="@string/new_feeling"
-        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/countLove" />
+        app:layout_constraintTop_toBottomOf="@+id/countAnger" />
 
     <EditText
         android:id="@+id/comment"
@@ -220,5 +222,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/browseEmotion"
         app:layout_constraintVertical_bias="0.0" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66" />
 
 </android.support.constraint.ConstraintLayout>
