@@ -115,7 +115,7 @@ public class BrowseListActivity extends AppCompatActivity {
         }
     }
 
-    public void emotionSort(){
+    private void emotionSort(){
         Collections.sort(temp_emotions, new Comparator<Emotion>() {
             @Override
             public int compare(Emotion o1, Emotion o2) {

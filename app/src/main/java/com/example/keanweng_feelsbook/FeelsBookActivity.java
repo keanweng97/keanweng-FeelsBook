@@ -253,7 +253,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
         toast.show();
     }
 
-    public void displayCount(){
+    private void displayCount(){
         loveText.setText(updateCountString("Love"));
         joyText.setText(updateCountString("Joy"));
         surpriseText.setText(updateCountString("Surprise"));
