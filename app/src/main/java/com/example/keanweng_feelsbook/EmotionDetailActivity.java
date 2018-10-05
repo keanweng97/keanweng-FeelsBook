@@ -161,6 +161,7 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
                         emotions.set(position, emotion);
                         saveInFile();
                         updateEmotion();
+                        displayToaster(getString(R.string.toaster_date));
                     }
                 }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
             }
@@ -198,6 +199,7 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
                             emotions.set(position, emotion);
                             saveInFile();
                             updateEmotion();
+                            displayToaster(getString(R.string.toaster_comment));
                         } catch (TooLongCommentException e) {
                             e.printStackTrace();
                             displayException(e.getMessage());
@@ -227,6 +229,7 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
                     public void onClick(DialogInterface dialog, int id) {
                         //do something
                         emotions.remove(position);
+                        displayToaster(getString(R.string.delete_toaster));
                         saveInFile();
                         finish();
                     }
@@ -238,5 +241,10 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
                 });
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    public void displayToaster(String text){
+        Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
+        toast.show();
     }
 }

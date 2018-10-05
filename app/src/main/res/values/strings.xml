@@ -45,4 +45,8 @@
     <string name="cancel">Cancel</string>
     <string name="confirm_delete">Delete Emotion?</string>
     <string name="confirm_delete_text">Deleted Emotions cannot be recovered! Delete?</string>
+    <string name="delete_toaster">Emotion Deleted!</string>
+    <string name="toaster_date">Date Updated!</string>
+    <string name="toaster_emotion">Emotion Updated!</string>
+    <string name="toaster_comment">Comment Updated!</string>
 </resources>

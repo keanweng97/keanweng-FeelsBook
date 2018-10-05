@@ -111,12 +111,12 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                         newLoveEmotion.setComment(text);
                         emotions.add(newLoveEmotion);
                         bodyText.setText("");
-                        displayRecorded();
+                        displayToaster(getString(R.string.record_success));
                         displayCount();
                         saveInFile();
                     } catch (TooLongCommentException e) {
                         e.printStackTrace();
-                        displayException(e.getMessage());
+                        displayToaster(e.getMessage());
                     }
                     break;
 
@@ -126,12 +126,12 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                         newJoyEmotion.setComment(text);
                         emotions.add(newJoyEmotion);
                         bodyText.setText("");
-                        displayRecorded();
+                        displayToaster(getString(R.string.record_success));
                         displayCount();
                         saveInFile();
                     } catch (TooLongCommentException e) {
                         e.printStackTrace();
-                        displayException(e.getMessage());
+                        displayToaster(e.getMessage());
                     }
                     break;
 
@@ -141,12 +141,12 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                         newSurpriseEmotion.setComment(text);
                         emotions.add(newSurpriseEmotion);
                         bodyText.setText("");
-                        displayRecorded();
+                        displayToaster(getString(R.string.record_success));
                         displayCount();
                         saveInFile();
                     } catch (TooLongCommentException e) {
                         e.printStackTrace();
-                        displayException(e.getMessage());
+                        displayToaster(e.getMessage());
                     }
                     break;
 
@@ -156,12 +156,12 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                         newAngerEmotion.setComment(text);
                         emotions.add(newAngerEmotion);
                         bodyText.setText("");
-                        displayRecorded();
+                        displayToaster(getString(R.string.record_success));
                         displayCount();
                         saveInFile();
                     } catch (TooLongCommentException e) {
                         e.printStackTrace();
-                        displayException(e.getMessage());
+                        displayToaster(e.getMessage());
                     }
                     break;
 
@@ -171,12 +171,12 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                         newSadnessEmotion.setComment(text);
                         emotions.add(newSadnessEmotion);
                         bodyText.setText("");
-                        displayRecorded();
+                        displayToaster(getString(R.string.record_success));
                         displayCount();
                         saveInFile();
                     } catch (TooLongCommentException e) {
                         e.printStackTrace();
-                        displayException(e.getMessage());
+                        displayToaster(e.getMessage());
                     }
                     break;
 
@@ -186,12 +186,12 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                         newFearEmotion.setComment(text);
                         emotions.add(newFearEmotion);
                         bodyText.setText("");
-                        displayRecorded();
+                        displayToaster(getString(R.string.record_success));
                         displayCount();
                         saveInFile();
                     } catch (TooLongCommentException e) {
                         e.printStackTrace();
-                        displayException(e.getMessage());
+                        displayToaster(e.getMessage());
                     }
                     break;
             }
@@ -248,22 +248,9 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    public void displayException(String text){
+    public void displayToaster(String text){
         Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
         toast.show();
-    }
-
-    public void displayRecorded(){
-        //Toast toast = Toast.makeText(this, , Toast.LENGTH_SHORT);
-        //toast.show();
-        Snackbar mySnackbar = Snackbar.make(findViewById(android.R.id.content), getString(R.string.record_success), Snackbar.LENGTH_SHORT)
-                .setAction(getString(R.string.view_count_short), new View.OnClickListener(){
-                    @Override
-                    public void onClick(View v){
-                        // go to view
-                    }
-                });
-        mySnackbar.show();
     }
 
     public void displayCount(){
