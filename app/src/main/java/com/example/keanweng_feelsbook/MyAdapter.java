@@ -1,5 +1,6 @@
 package com.example.keanweng_feelsbook;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,32 +11,33 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private ArrayList<Emotion> mDataset;
+    private final ArrayList<Emotion> mDataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         // each data item is just a string in this case
-        public TextView title;
-        public TextView subtitle;
-        public TextView date;
+        final TextView title;
+        final TextView subtitle;
+        final TextView date;
 
-        public MyViewHolder(View v) {
+        MyViewHolder(View v) {
             super(v);
             v.setOnClickListener(this);
 
-            title = (TextView) v.findViewById(R.id.textView);
-            subtitle = (TextView) v.findViewById(R.id.textView3);
-            date = (TextView) v.findViewById(R.id.textView2);
+            title = v.findViewById(R.id.textView);
+            subtitle = v.findViewById(R.id.textView3);
+            date = v.findViewById(R.id.textView2);
         }
 
         @Override
         public void onClick(View v) {
             if (mOnEntryClickListener != null) {
-                mOnEntryClickListener.onEntryClick(v, getLayoutPosition());
+                mOnEntryClickListener.onEntryClick(getLayoutPosition());
             }
         }
     }
@@ -46,24 +48,24 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     // Create new views (invoked by the layout manager)
+    @NonNull
     @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+    public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
                                                      int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.emotion_list_item, parent, false);
-        MyViewHolder vh = new MyViewHolder(v);
-        return vh;
+        return new MyViewHolder(v);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         Emotion emotion = mDataset.get(position);
 
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.CANADA);
         Date date = emotion.getDate();
         String f_date = df.format(date);
 
@@ -81,7 +83,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private OnEntryClickListener mOnEntryClickListener;
 
     public interface OnEntryClickListener {
-        void onEntryClick(View view, int position);
+        void onEntryClick(int position);
     }
 
     public void setOnEntryClickListener(OnEntryClickListener onEntryClickListener) {

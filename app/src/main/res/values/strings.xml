@@ -8,7 +8,6 @@
     <string name="fear">Fear</string>
     <string name="count">Emotion count:</string>
     <string name="optional">optional</string>
-    <string name="add_comment">Add comment:</string>
     <string name="anger_count">Anger:</string>
     <string name="love_count">Love:</string>
     <string name="joy_count">Joy:</string>
@@ -21,7 +20,6 @@
     <string name="emotion_list">Past recorded emotions:</string>
     <string name="record_success">Emotion recorded!</string>
     <string name="view_count_short">View</string>
-    <string name="ok">OK</string>
     <string name="delete">DELETE</string>
     <string name="edit_date">Edit Date</string>
     <string name="emotion_detail">Emotion Detail</string>
@@ -29,7 +27,6 @@
     <string name="emotion_date">Date Recorded:</string>
     <string name="emotion_comment">Comment:</string>
     <string name="no_comment">No comment was added for this emotion!</string>
-    <string name="edit_emotion">Edit Emotion</string>
     <string name="edit_comment">Edit Comment</string>
 
     <string-array name="emotions_array">
@@ -47,6 +44,8 @@
     <string name="confirm_delete_text">Deleted Emotions cannot be recovered! Delete?</string>
     <string name="delete_toaster">Emotion Deleted!</string>
     <string name="toaster_date">Date Updated!</string>
-    <string name="toaster_emotion">Emotion Updated!</string>
     <string name="toaster_comment">Comment Updated!</string>
+    <string name="title">Title</string>
+    <string name="subtitle">Subtitle</string>
+    <string name="date">Date</string>
 </resources>

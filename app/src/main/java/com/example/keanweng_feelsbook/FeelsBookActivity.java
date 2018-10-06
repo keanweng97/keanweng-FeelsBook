@@ -30,7 +30,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
 
     private static final String FILENAME = "file.sav";
     private EditText bodyText;
-    private ArrayList<Emotion> emotions = new ArrayList<Emotion>();
+    private ArrayList<Emotion> emotions = new ArrayList<>();
     private TextView loveText;
     private TextView joyText;
     private TextView surpriseText;
@@ -43,16 +43,16 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bodyText = (EditText) findViewById(R.id.comment);
+        bodyText = findViewById(R.id.comment);
         //emotionList = (ListView) findViewById(R.id.emotionList);
-        Button loveButton = (Button) findViewById(R.id.love);
-        Button joyButton = (Button) findViewById(R.id.joy);
-        Button surpriseButton = (Button) findViewById(R.id.surprise);
-        Button angerButton = (Button) findViewById(R.id.anger);
-        Button sadnessButton = (Button) findViewById(R.id.sadness);
-        Button fearButton = (Button) findViewById(R.id.fear);
-        Button browseButton = (Button) findViewById(R.id.browseEmotion);
-        Button countButton = (Button) findViewById(R.id.viewCount);
+        Button loveButton = findViewById(R.id.love);
+        Button joyButton = findViewById(R.id.joy);
+        Button surpriseButton = findViewById(R.id.surprise);
+        Button angerButton = findViewById(R.id.anger);
+        Button sadnessButton = findViewById(R.id.sadness);
+        Button fearButton = findViewById(R.id.fear);
+        Button browseButton = findViewById(R.id.browseEmotion);
+        Button countButton = findViewById(R.id.viewCount);
         loveText = findViewById(R.id.countLove);
         joyText = findViewById(R.id.countJoy);
         surpriseText = findViewById(R.id.countSurprise);
@@ -111,7 +111,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                         newLoveEmotion.setComment(text);
                         emotions.add(newLoveEmotion);
                         bodyText.setText("");
-                        displayToaster(getString(R.string.record_success));
+                        displayRecorded(emotions.indexOf(newLoveEmotion));
                         displayCount();
                         saveInFile();
                     } catch (TooLongCommentException e) {
@@ -126,7 +126,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                         newJoyEmotion.setComment(text);
                         emotions.add(newJoyEmotion);
                         bodyText.setText("");
-                        displayToaster(getString(R.string.record_success));
+                        displayRecorded(emotions.indexOf(newJoyEmotion));
                         displayCount();
                         saveInFile();
                     } catch (TooLongCommentException e) {
@@ -141,7 +141,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                         newSurpriseEmotion.setComment(text);
                         emotions.add(newSurpriseEmotion);
                         bodyText.setText("");
-                        displayToaster(getString(R.string.record_success));
+                        displayRecorded(emotions.indexOf(newSurpriseEmotion));
                         displayCount();
                         saveInFile();
                     } catch (TooLongCommentException e) {
@@ -156,7 +156,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                         newAngerEmotion.setComment(text);
                         emotions.add(newAngerEmotion);
                         bodyText.setText("");
-                        displayToaster(getString(R.string.record_success));
+                        displayRecorded(emotions.indexOf(newAngerEmotion));
                         displayCount();
                         saveInFile();
                     } catch (TooLongCommentException e) {
@@ -171,7 +171,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                         newSadnessEmotion.setComment(text);
                         emotions.add(newSadnessEmotion);
                         bodyText.setText("");
-                        displayToaster(getString(R.string.record_success));
+                        displayRecorded(emotions.indexOf(newSadnessEmotion));
                         displayCount();
                         saveInFile();
                     } catch (TooLongCommentException e) {
@@ -186,7 +186,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
                         newFearEmotion.setComment(text);
                         emotions.add(newFearEmotion);
                         bodyText.setText("");
-                        displayToaster(getString(R.string.record_success));
+                        displayRecorded(emotions.indexOf(newFearEmotion));
                         displayCount();
                         saveInFile();
                     } catch (TooLongCommentException e) {
@@ -248,9 +248,24 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    public void displayToaster(String text){
+    private void displayToaster(String text){
         Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    private void displayRecorded(final int position){
+        Snackbar mySnackbar = Snackbar.make(findViewById(android.R.id.content), getString(R.string.record_success), Snackbar.LENGTH_SHORT)
+                .setAction(getString(R.string.view_count_short), new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v){
+                        // go to view
+                        Intent intent = new Intent(FeelsBookActivity.this, EmotionDetailActivity.class);
+                        //intent.putExtra("Class","FeelsBook");
+                        intent.putExtra("Pos", position);
+                        startActivity(intent);
+                    }
+                });
+        mySnackbar.show();
     }
 
     private void displayCount(){
@@ -262,7 +277,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
         fearText.setText(updateCountString("Fear"));
     }
 
-    public String updateCountString(String emotion){
+    private String updateCountString(String emotion){
         String countString = emotion + ": ";
         int count = countEmotion(emotion);
         if (count > 99){
@@ -273,7 +288,7 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
         return countString;
     }
 
-    public int countEmotion(String emotionToMatch) {
+    private int countEmotion(String emotionToMatch) {
 
         int count = 0;
         for (Emotion emotion: emotions) {

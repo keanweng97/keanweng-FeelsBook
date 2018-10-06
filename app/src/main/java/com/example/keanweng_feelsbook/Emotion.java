@@ -2,18 +2,13 @@ package com.example.keanweng_feelsbook;
 
 import java.util.Date;
 
-public class Emotion {
+class Emotion {
 
-    protected String moodtype;
-    protected Date date;
-    protected String comment;
+    String moodtype;
+    private Date date;
+    private String comment;
 
-    public Emotion(){
-        this.date = new Date();
-    }
-
-    public Emotion(String comment){
-        this.comment = comment;
+    Emotion(){
         this.date = new Date();
     }
 

@@ -4,11 +4,9 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,13 +34,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
+import java.util.Locale;
 
 public class EmotionDetailActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     private static final String FILENAME = "file.sav";
-    private ArrayList<Emotion> emotions = new ArrayList<Emotion>();
+    private ArrayList<Emotion> emotions = new ArrayList<>();
     private TextView dateText;
     private TextView commentText;
     private Calendar date;
@@ -63,11 +60,18 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
         editComment.setOnClickListener(this);
         delEmotion.setOnClickListener(this);
 
-        Intent intent = getIntent();
-        position = intent.getIntExtra(BrowseListActivity.POS_EXTRA, 0);
+        /*String className = getIntent().getStringExtra("Class");
+        if (className.equals("FeelsBook")){
+            position = getIntent().getIntExtra("Pos", 0);
+        }
+        else if (className.equals("BrowseList")){
+            position = getIntent().getIntExtra("Pos", 0);
+        }*/
+
+        position = getIntent().getIntExtra("Pos", 0);
         updateEmotion();
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        Spinner spinner = findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.emotions_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -130,7 +134,7 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
     private void updateEmotion() {
         loadFromFile();
         emotion = emotions.get(position);
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.CANADA);
         Date uf_date = emotion.getDate();
         String f_date = df.format(uf_date);
 
@@ -143,7 +147,7 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    public void showDateTimePicker() {
+    private void showDateTimePicker() {
         final Calendar currentDate = Calendar.getInstance();
         currentDate.setTime(emotion.getDate());
         date = Calendar.getInstance();
@@ -180,13 +184,13 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
         // Another interface callback
     }
 
-    public void showEmotionDialog(){
+    private void showEmotionDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = this.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.edittext_dialog, null);
+        //LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = View.inflate(this, R.layout.edittext_dialog, null);
         builder.setView(dialogView);
 
-        final EditText edt = (EditText) dialogView.findViewById(R.id.edit_comment_text);
+        final EditText edt = dialogView.findViewById(R.id.edit_comment_text);
 
         builder.setTitle(R.string.edit_comment)
                 .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
@@ -215,12 +219,12 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
         alert.show();
     }
 
-    public void displayException(String text){
+    private void displayException(String text){
         Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
         toast.show();
     }
 
-    public void deleteEmotion(){
+    private void deleteEmotion(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.confirm_delete)
                 .setMessage(R.string.confirm_delete_text)
@@ -243,7 +247,7 @@ public class EmotionDetailActivity extends AppCompatActivity implements View.OnC
         alert.show();
     }
 
-    public void displayToaster(String text){
+    private void displayToaster(String text){
         Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
         toast.show();
     }
