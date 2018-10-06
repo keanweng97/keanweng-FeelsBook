@@ -44,7 +44,6 @@ public class FeelsBookActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_main);
 
         bodyText = findViewById(R.id.comment);
-        //emotionList = (ListView) findViewById(R.id.emotionList);
         Button loveButton = findViewById(R.id.love);
         Button joyButton = findViewById(R.id.joy);
         Button surpriseButton = findViewById(R.id.surprise);
